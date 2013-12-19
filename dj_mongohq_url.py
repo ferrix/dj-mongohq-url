@@ -37,6 +37,9 @@ def parse(url):
 
     config = {}
 
+    if not isinstance(url, basestring):
+        url = ''
+
     url = urlparse.urlparse(url)
 
     # Remove query strings.

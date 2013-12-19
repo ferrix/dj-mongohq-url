@@ -26,6 +26,39 @@ class DatabaseTestSuite(unittest.TestCase):
         assert url['PASSWORD'] == 'wegauwhgeuioweg'
         assert url['PORT'] == 10031
 
+    def test_empty_string_parsing(self):
+        url = ''
+        url = dj_mongohq_url.parse(url)
+
+        try:
+            url['ENGINE'] == None
+            assert False
+        except KeyError:
+            assert True
+
+        assert url['NAME'] == ''
+        assert url['HOST'] == None
+        assert url['USER'] == None
+        assert url['PASSWORD'] == None
+        assert url['PORT'] == None
+
+    def test_invalid_type_parsing(self):
+        urls = [None, 123, {0: 1}, [1, 2, 3]]
+
+        for url in urls:
+            url = dj_mongohq_url.parse(url)
+
+            try:
+                url['ENGINE'] == None
+                assert False
+            except KeyError:
+                assert True
+
+            assert url['NAME'] == ''
+            assert url['HOST'] == None
+            assert url['USER'] == None
+            assert url['PASSWORD'] == None
+            assert url['PORT'] == None
 
     def test_mongodb_url(self):
         a = dj_mongohq_url.config()
@@ -41,9 +74,6 @@ class DatabaseTestSuite(unittest.TestCase):
         assert url['USER'] == 'heroku'
         assert url['PASSWORD'] == 'wegauwhgeuioweg'
         assert url['PORT'] == 10031
-
-
-
 
 if __name__ == '__main__':
     unittest.main()
