@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import os
+import six
 
 try:
     import urlparse
@@ -37,7 +38,7 @@ def parse(url):
 
     config = {}
 
-    if not isinstance(url, basestring):
+    if not isinstance(url, six.string_types):
         url = ''
 
     url = urlparse.urlparse(url)

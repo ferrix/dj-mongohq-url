@@ -44,12 +44,13 @@ from setuptools import setup
 
 setup(
     name='dj-mongohq-url',
-    version='0.0.2',
+    version='0.0.3',
     url='https://github.com/ferrix/dj-mongohq-url',
     license='BSD',
     author='Ferrix Hovi',
     author_email='ferrix+github@ferrix.fi',
     description='Use MongoDB URLs in your Django Application.',
+    install_requires=['six'],
     long_description=__doc__,
     py_modules=['dj_mongohq_url'],
     zip_safe=False,
