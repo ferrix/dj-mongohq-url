@@ -44,7 +44,7 @@ from setuptools import setup
 
 setup(
     name='dj-mongohq-url',
-    version='0.0.1',
+    version='0.0.2',
     url='https://github.com/ferrix/dj-mongohq-url',
     license='BSD',
     author='Ferrix Hovi',
